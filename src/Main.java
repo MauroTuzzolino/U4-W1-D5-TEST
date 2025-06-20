@@ -7,63 +7,81 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Execute[] elementi = new Execute[5];
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Scegliere il tipo che si preferisce: 1 = Immagine, 2 = Audio, 3 = Video");
-            int tipo = scanner.nextInt();
+        System.out.println("===================================");
+        System.out.println("  Benvenuto! Crea i tuoi elementi.");
+        System.out.println("===================================\n");
 
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Elemento #" + (i + 1));
+            System.out.println("------------------------------");
+            System.out.println("Scegli il tipo:");
+            System.out.println("  1 = Immagine");
+            System.out.println("  2 = Audio");
+            System.out.println("  3 = Video");
+            System.out.print("Scelta: ");
+            int tipo = scanner.nextInt();
             scanner.nextLine();
 
-            System.out.println("Titolo: ");
+            System.out.print("Titolo: ");
             String titolo = scanner.nextLine();
-
 
             switch (tipo) {
                 case 1:
-                    System.out.println("Inserire la luminosità: ");
-                    int luminositàImg = scanner.nextInt();
-                    elementi[i] = new Image(titolo, luminositàImg);
+                    System.out.print("Inserire la luminosita: ");
+                    int luminositaImg = scanner.nextInt();
+
+                    elementi[i] = new Image(titolo, luminositaImg);
                     break;
 
                 case 2:
-                    System.out.println("Inserire la durata: ");
+                    System.out.print("Inserire la durata: ");
                     int durataAudio = scanner.nextInt();
 
-                    System.out.println("Inserire il volume: ");
+                    System.out.print("Inserire il volume: ");
                     int volumeAudio = scanner.nextInt();
 
                     elementi[i] = new Audio(titolo, durataAudio, volumeAudio);
                     break;
 
                 case 3:
-                    System.out.println("Inserire la durata: ");
+                    System.out.print("Inserire la durata: ");
                     int durataVideo = scanner.nextInt();
 
-                    System.out.println("Inserire il volume: ");
+                    System.out.print("Inserire il volume: ");
                     int volumeVideo = scanner.nextInt();
 
-                    System.out.println("Inserire la luminosità: ");
-                    int luminositàVideo = scanner.nextInt();
+                    System.out.print("Inserire la luminosita: ");
+                    int luminositaVideo = scanner.nextInt();
 
-                    elementi[i] = new Video(titolo, durataVideo, volumeVideo, luminositàVideo);
+                    elementi[i] = new Video(titolo, durataVideo, volumeVideo, luminositaVideo);
                     break;
 
                 default:
-                    System.out.println("Scelta non valida");
+                    System.out.println("Scelta non valida. Riprova.\n");
                     i--;
                     break;
             }
-
+            System.out.println();
         }
 
         int scelta;
         do {
-            System.out.println("Scegliere quale elemento eseguire (1-5) o 0 per uscire: ");
+            System.out.println("\n==============================");
+            System.out.println("Quale elemento vuoi eseguire?");
+            System.out.println("  (1-5) Esegui elemento");
+            System.out.println("  0     Esci");
+            System.out.print("Scelta: ");
             scelta = scanner.nextInt();
+
             if (scelta > 0 && scelta <= 5) {
+                System.out.println("\n>> Eseguo elemento #" + scelta + "...\n");
                 elementi[scelta - 1].run();
+            } else if (scelta != 0) {
+                System.out.println("Scelta non valida. Riprova.");
             }
         } while (scelta != 0);
 
+        System.out.println("\nProgramma terminato. Arrivederci!");
         scanner.close();
     }
 }

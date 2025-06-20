@@ -4,13 +4,13 @@ import interfacce.Play;
 public class Video extends Multimedia implements Execute, Play {
     private int durata;
     private int volume;
-    private int luminosità;
+    private int luminosita;
 
-    public Video(String titolo, int durata, int volume, int luminosità) {
+    public Video(String titolo, int durata, int volume, int luminosita) {
         super(titolo);
         this.durata = durata;
         this.volume = volume;
-        this.luminosità = luminosità;
+        this.luminosita = luminosita;
     }
 
     public void lowVolume() {
@@ -22,11 +22,11 @@ public class Video extends Multimedia implements Execute, Play {
     }
 
     public void lowLum() {
-        if (luminosità > 0) luminosità--;
+        if (luminosita > 0) luminosita--;
     }
 
     public void highLum() {
-        luminosità++;
+        luminosita++;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Video extends Multimedia implements Execute, Play {
             }
 
             String asterischi = "";
-            for (int j = 0; j < luminosità; j++) {
+            for (int j = 0; j < luminosita; j++) {
                 punti += "*";
             }
 

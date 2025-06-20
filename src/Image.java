@@ -1,24 +1,24 @@
 import interfacce.Execute;
 
 public class Image extends Multimedia implements Execute {
-    private int luminosità;
+    private int luminosita;
 
-    public Image(String titolo, int luminosità) {
+    public Image(String titolo, int luminosita) {
         super(titolo);
-        this.luminosità = luminosità;
+        this.luminosita = luminosita;
     }
 
     public void lowLum() {
-        if (luminosità > 0) luminosità--;
+        if (luminosita > 0) luminosita--;
     }
 
     public void highLum() {
-        luminosità++;
+        luminosita++;
     }
 
     public void show() {
         String asterischi = "";
-        for (int i = 0; i < luminosità; i++) {
+        for (int i = 0; i < luminosita; i++) {
             asterischi += "*";
         }
         System.out.println(titolo + " " + asterischi);
